@@ -1,0 +1,114 @@
+# The "low test" data consists of measurements of the electrical resistance of a piece of material at 
+#a low temperature, taken with a precision electrical measurement device. 
+#The measurements are collected in Ohms and stored in a dataframe called "lowtest".
+
+
+# Create the lowtest data frame
+lowtest <- data.frame(
+  lowtestnumber = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+  temperature = c(28.7, 28.7, 28.7, 28.7, 28.7, 28.7, 28.7, 28.7, 28.7, 28.7),
+  ohms = c(14.23, 14.24, 13.7, 13.7, 13.9, 13.9, 13.93,13.93 , 13.93, 13.93)
+)
+
+# Print the lowtest data frame
+print(lowtest)
+
+# The "high test" data consists of measurements of the electrical resistance of a piece of material at a low temperature, taken with a precision electrical measurement device. The measurements are collected in Ohms and stored in a dataframe called "hightest".
+
+
+# Create the hightest data frame
+hightest <- data.frame(
+  hightestnumber = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+  temperature = c(47.3, 47.3, 47.3, 47.3, 47.3, 47.3, 47.3, 47.3, 47.3, 47.3),
+  ohms = c(14.6, 14.6, 14.6, 14.6, 14.6, 14.6, 14.6, 14.6, 14.6, 14.6)
+)
+
+# Print the hightest data frame
+print(hightest)
+
+# The temperature coefficient of resistance (TCR) is calculated as follows:
+# TCR = (R2 - R1) / (T2 - T1) * (100 / R1)
+# where R1 and R2 are the electrical resistances at temperatures T1 and T2, respectively.
+# The result is expressed as a percentage change in resistance per degree Celsius.
+
+
+#Ro is the average resistance of the low test
+# Calculate the mean of the "ohm" column
+
+Ro <- mean(lowtest$ohm)
+
+Rodescription <- "Low Test Resistance Average"
+
+# Print the description and the data
+print(Rodescription)
+print(Ro)
+
+
+#RT is the average resistance of the high test
+#Calculate the mean of the “ohm” column
+RT <-mean(hightest$ohm)
+rtdescription <- "High Test Resistance Average"
+
+# Print the description and the data
+print(rtdescription)
+print(RT)
+
+
+#To is the average temperature of the low test
+#Calculate the mean of the “temperature” column
+To <- mean(lowtest$temperature)
+
+
+todescription <- "Low Test Temperature Average"
+
+# Print the description and the data
+print(todescription)
+print(To)
+
+
+#T is the average temperature of the high test
+#Calculate the mean of the “temperature” column
+T <- mean(hightest$temperature)
+
+tdescription <- "High Test Temperature Average"
+
+# Print the description and the data
+print(tdescription)
+print(T)
+
+
+
+# The temperature coefficient of resistance (TCR) is a measure of the change 
+# in electrical resistance of a material as a function of temperature.
+TCR <- (RT - Ro) / (T - To) * (1 / Ro)
+TCRdescription <- "Coefficient of Resistance"
+
+# Print the description and the data
+print(TCRdescription)
+print(TCR)
+
+# Define the temperature for which we want to predict the resistance
+temperature <- 0
+
+# Calculate the predicted resistance
+predicted_resistance = Ro*(1 + (TCR * (temperature - To)))
+
+#Print the input temperature
+inputtempdescription <- "Input temperature for compensation calculation"
+print(inputtempdescription)
+print(temperature)
+
+# Print the predicted resistance
+predicted_resistance_description <- "Compensated Resistance"
+print(predicted_resistance_description)
+print(predicted_resistance)
+
+# Create a matrix with the specified variables
+calibrationslope <- matrix(c(To, Ro, T, RT, temperature, predicted_resistance), nrow = 3, byrow = TRUE,
+                   dimnames = list(NULL, c("Temperature", "Resistance")))
+
+# Print the matrix
+print(calibrationslope)
+
+#Plot the matrix
+plot(calibrationslope, xlab = "Temperature", ylab = "Resistance", main = "Temperature Coefficient of Resistance")
