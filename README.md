@@ -1,13 +1,16 @@
-Introduction: 
+This repository contains code for a resistance temperature coefficient measurement system, which can be used to calibrate automated computer systems that measure electrical assemblies in environments that could cause temperatures to change. For example, if you're testing electrical systems near freezers or furnaces, it can affect your measurements.
 
-The "Ohm Temperature Calibration Tool" is a useful tool for calibrating automated computer systems that measure electrical assemblies in environments where temperatures may change. These types of systems are often used in a variety of settings, including near freezers or furnaces, where temperature fluctuations can affect the accuracy of measurements.
+The system works by taking measurements of the electrical resistance of a material at two different temperatures, using a precision electrical measurement device. The temperature coefficient of resistance (TCR) is then calculated as the percentage change in resistance per degree Celsius. The TCR can be used to predict the resistance at a specific temperature, using the following formula:
 
-The tool was built using R Language, a powerful programming language commonly used for statistical analysis and data visualization. One of the benefits of using R Language is that it allows users to easily manipulate and analyze data sets, making it a valuable tool for working with large amounts of data.
+TCR = (R2 - R1) / (T2 - T1) * (100 / R1)
 
-The tool uses a concept called the temperature coefficient of resistance (TCR) to predict resistance measurements based on temperature. TCR is a measure of the change in electrical resistance of a material as a function of temperature. The tool calculates TCR using the average resistance and temperature of two data sets, one taken at a low temperature and the other at a high temperature. The tool then uses TCR to predict the resistance of a material at a specific temperature.
+Where R1 and R2 are the electrical resistances at temperatures T1 and T2, respectively.
 
-Overall, the "Ohm Temperature Calibration Tool" is a useful tool for calibrating automated computer systems that measure electrical assemblies in changing temperature environments. By using R Language, the tool is able to easily manipulate and analyze large amounts of data, making it a valuable tool for a variety of applications.
+In addition to the TCR measurement system, we have also developed a function for measurement uncertainty. This is important because all measurements have some degree of uncertainty, due to various factors such as equipment precision and environmental conditions. The function generates a random number within a specified range, which represents the uncertainty of the measurement. The range is based on a 95% standard deviation, which means that there is a 95% chance that the generated number will fall within 1 standard deviation of the mean (0).
 
+To use the measurement uncertainty function, simply input your measurement uncertainty (in Ohms) as a variable. The function will automatically double the input value to account for the K2 Standard Deviation 17025 compliance. Make sure to use the correct units of measure, as incorrect units can lead to serious errors in your calculations.
+
+We hope that this code will be useful for those looking to calibrate their computer systems using NIST traceable equipment.
 
 Testing Procedure: 
 
