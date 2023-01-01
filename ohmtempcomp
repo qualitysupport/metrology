@@ -57,8 +57,6 @@ print(RT)
 #To is the average temperature of the low test
 #Calculate the mean of the “temperature” column
 To <- mean(lowtest$temperature)
-
-
 todescription <- "Low Test Temperature Average"
 
 # Print the description and the data
@@ -69,13 +67,11 @@ print(To)
 #T is the average temperature of the high test
 #Calculate the mean of the “temperature” column
 T <- mean(hightest$temperature)
-
 tdescription <- "High Test Temperature Average"
 
 # Print the description and the data
 print(tdescription)
 print(T)
-
 
 
 # The temperature coefficient of resistance (TCR) is a measure of the change 
@@ -99,6 +95,7 @@ predicted_resistance = Ro*(1 + (TCR * (temperature - To)))
 inputtempdescription <- "Input temperature for compensation calculation"
 print(inputtempdescription)
 print(temperature)
+
 
 # Print the predicted resistance
 predicted_resistance_description <- "Compensated Resistance"
