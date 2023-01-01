@@ -1,0 +1,17 @@
+#Laboratory will supply an uncertainty estimate.
+#This is a K2 95% Standard Deviation 17025 compliant calculation of measurement uncertainty. 
+#They can be found on an accredited scope.  
+#If a laboratory has an uncertainty of 0.1 Ohms. The actual uncertainty will be .2 Ohms. 
+# The computer will automatically double what you input as the mesaurement uncertainty. 
+#Absolutely make sure you input your ohms variable in Ohms. 
+
+#input measurement uncertainty from a laboratory certification. 
+measurement_uncertainty <- 0.002
+
+#runif function in R to generate a random number within the specified 
+#This will generate a random number between -0.002 and 0.002, with a 95% chance 
+#that the number will fall within 1 standard deviation of the mean (0).
+
+generated_uncertainty <- runif(1, -measurement_uncertainty, measurement_uncertainty)
+
+print(generated_uncertainty)
