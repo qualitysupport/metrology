@@ -6,11 +6,11 @@ TCR = (R2 - R1) / (T2 - T1) * (100 / R1)
 
 Where R1 and R2 are the electrical resistances at temperatures T1 and T2, respectively.
 
-In addition to the TCR measurement system, we have also developed a function for measurement uncertainty. This is important because all measurements have some degree of uncertainty, due to various factors such as equipment precision and environmental conditions. The function generates a random number within a specified range, which represents the uncertainty of the measurement. The range is based on a 95% standard deviation, which means that there is a 95% chance that the generated number will fall within 1 standard deviation of the mean (0).
+In addition to the TCR measurement system, I have also developed a function for measurement uncertainty. This is important because all measurements have some degree of uncertainty, due to various factors such as equipment precision and environmental conditions. The function generates a random number within a specified range, which represents the uncertainty of the measurement. The range is based on a 95% standard deviation, which means that there is a 95% chance that the generated number will fall within 1 standard deviation of the mean (0).
 
 To use the measurement uncertainty function, simply input your measurement uncertainty (in Ohms) as a variable. The function will automatically double the input value to account for the K2 Standard Deviation 17025 compliance. Make sure to use the correct units of measure, as incorrect units can lead to serious errors in your calculations.
 
-We hope that this code will be useful for those looking to calibrate their computer systems using NIST traceable equipment.
+I hope that this code will be useful for those looking to calibrate their computer systems using NIST traceable equipment.
 
 Testing Procedure: 
 
