@@ -15,6 +15,8 @@ To perform the testing procedure using the Ohm Temperature Calibration Tool:
 Gather the necessary equipment, including a calibrated Ohmmeter, the material to be tested, and a computer running the Ohm Temperature Calibration Tool code.
 Measure the resistance of the material at the low end of the temperature range, using the Ohmmeter. 
 
+If you're a beginner to R, use this program to run the code: https://www.mycompiler.io/
+
 Take at least 10 measurements to test repeatability.
 
 Record the measurements and calculate the average resistance, using the Ohm Temperature Calibration Tool code. This will be the "Low Test Resistance Average" (Ro).
