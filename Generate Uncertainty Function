@@ -1,0 +1,10 @@
+generate_uncertainty <- function(measurement_uncertainty) {
+  # runif function in R to generate a random number within the specified 
+  # This will generate a random number between -measurement_uncertainty and measurement_uncertainty, 
+  # with a 95% chance that the number will fall within 1 standard deviation of the mean (0).
+  generated_uncertainty <- runif(1, -measurement_uncertainty, measurement_uncertainty)
+  return(generated_uncertainty)
+}
+
+uncertainty <- generate_uncertainty(0.5)
+print(uncertainty)
