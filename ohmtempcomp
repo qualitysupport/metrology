@@ -7,7 +7,7 @@
 lowtest <- data.frame(
   lowtestnumber = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
   temperature = c(28.7, 28.7, 28.7, 28.7, 28.7, 28.7, 28.7, 28.7, 28.7, 28.7),
-  ohms = c(14.23, 14.24, 13.7, 13.7, 13.9, 13.9, 13.93,13.93 , 13.93, 13.93)
+  ohms = c(14.23, 14.24, 13.7, 13.70, 13.90, 13.90, 13.93,13.93 , 13.93, 13.93)
 )
 
 # Print the lowtest data frame
@@ -89,6 +89,8 @@ print(TCR)
 
 # Define the temperature for which we want to predict the resistance
 temperature <- 0
+temperaturecalibration <- 0:50
+
 
 # Calculate the predicted resistance
 predicted_resistance = Ro*(1 + (TCR * (temperature - To)))
@@ -112,3 +114,39 @@ print(calibrationslope)
 
 #Plot the matrix
 plot(calibrationslope, xlab = "Temperature", ylab = "Resistance", main = "Temperature Coefficient of Resistance")
+
+
+# Define the temperature range for which you want to predict the resistance
+temperature_range <- seq(0, 50, by = 1)
+
+# Create an empty vector to store the predicted resistance values
+predicted_resistance_values <- numeric()
+
+# Loop through the temperature range
+for (temp in temperature_range) {
+  
+  # Calculate the predicted resistance
+  predicted_resistance = Ro*(1 + (TCR * (temp - To)))
+  
+  # Store the predicted resistance value in the vector
+  predicted_resistance_values <- c(predicted_resistance_values, predicted_resistance)
+}
+
+# Plot the temperature range and predicted resistance values
+plot(temperature_range, predicted_resistance_values, type = "p", col = "red")
+
+# Convert the matrix to a data frame
+calibrationslope_df <- as.data.frame(calibrationslope)
+
+# Print the data frame
+print(calibrationslope_df)
+
+
+results <- data.frame(Temperature = numeric(), Resistance = numeric())
+for (temp in temperaturecalibration) {
+  temperature <- temp
+  predicted_resistance <- Ro*(1 + (TCR * (temperature - To)))
+  results <- rbind(results, c(temperature, predicted_resistance))
+}
+
+print(results)
