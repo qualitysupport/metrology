@@ -27,4 +27,4 @@ Calculate the temperature coefficient of resistance (TCR) using the Ohm Temperat
 
 Use the TCR to predict the resistance of the material at a specific temperature, using the Ohm Temperature Calibration Tool code. The program has a loop function that will give you a list of the temperature and the corresponding resistance measurements.
 
-Use the results of the predicted resistances to calibrate automated computer systems that measure electrical assemblies in environments with moving temperatures. The goal is to make sure the software systems have proper coefficients and errors that trace to traceble testing. 
+Use the results of the predicted resistances to calibrate automated computer systems that measure electrical assemblies in environments with moving temperatures. The goal is to make sure the software systems have efficient error budgets programmed correctly.  
