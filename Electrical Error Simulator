@@ -1,0 +1,126 @@
+#inputs
+
+resistance <- 14
+voltage <-24
+electrical_uncertainty <- 0.2
+temperature_uncertainty <- 1
+measurement_uncertainty <- .1
+
+#lowtest temperature inputs from temperature sensor
+
+lowtest1_temp <- 28.700
+lowtest2_temp <- 28.700
+lowtest3_temp <- 28.700
+lowtest4_temp <- 28.700
+lowtest5_temp <- 28.700
+lowtest6_temp <- 28.700
+lowtest7_temp <- 28.700
+lowtest8_temp <- 28.700
+lowtest9_temp <- 28.700
+lowtest10_temp <- 28.700
+
+#lowtest resistance inputs from Ohmmeter. 
+lowtest1_ohms <- 13.4400
+lowtest2_ohms <- 13.4400
+lowtest3_ohms <- 13.4400
+lowtest4_ohms <- 13.4400
+lowtest5_ohms <- 13.4400
+lowtest6_ohms <- 13.4400
+lowtest7_ohms <- 13.4400
+lowtest8_ohms <- 13.4400
+lowtest9_ohms <- 13.4400
+lowtest10_ohms <-13.4400
+
+#hightest temperature inputs from temperator sensor
+
+hightest1_temp <-47.300
+hightest2_temp <-47.300
+hightest3_temp <-47.300
+hightest4_temp <-47.300
+hightest5_temp <-47.300
+hightest6_temp <-47.300
+hightest7_temp <-47.300
+hightest8_temp <-47.300
+hightest9_temp <-47.300
+hightest10_temp <-47.300
+
+#hightest resistance inputs from Ohmmeter
+hightest1_ohms <- 14.6000
+hightest2_ohms <- 14.6000
+hightest3_ohms <- 14.6000 
+hightest4_ohms <- 14.6000
+hightest5_ohms <- 14.6000
+hightest6_ohms <- 14.6000
+hightest7_ohms <- 14.6000
+hightest8_ohms <- 14.6000
+hightest9_ohms <- 14.6000
+hightest10_ohms <- 14.6000
+
+#Calculate resistance
+current <- voltage / resistance
+currentdescription <- "Variable Current"
+print(currentdescription)
+print (current)
+
+# Calculate the power loss
+power_loss <- voltage^2 / resistance
+powerloss_description <- "Power Loss"
+print(powerloss_description)
+print(power_loss)
+
+# Print the voltage
+voltagedescription <- "Constant Voltage"
+print(voltagedescription)
+print(voltage)
+
+#Print the resistance
+resistancedescription <- "Target resistance"
+print(resistancedescription)
+print(resistance)
+
+
+#print temperature_uncertainty
+temperature_uncertainty_description <- "Temperature Sensing Uncertainty"
+print(temperature_uncertainty_description)
+print(temperature_uncertainty)
+
+#print resisitance uncertainty
+electrical_uncertainty_description <- "Electrical Sensing Uncertainty"
+print(electrical_uncertainty_description)
+print(electrical_uncertainty)
+
+# Create the lowtest data frame
+lowtest <- data.frame(
+  "Test Number" = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+  "Temperature" = c(lowtest1_temp, lowtest2_temp, lowtest3_temp, lowtest4_temp, lowtest5_temp, 
+                    lowtest6_temp, lowtest7_temp, lowtest8_temp, lowtest9_temp, lowtest10_temp),
+  "Ohms" = c(lowtest1_ohms, lowtest2_ohms, lowtest3_ohms, lowtest4_ohms, lowtest5_ohms, 
+             lowtest6_ohms, lowtest7_ohms, lowtest8_ohms, lowtest9_ohms, lowtest10_ohms)
+)
+
+# Add the temperature and ohms uncertainty to the lowtest data frame
+lowtest$Temperature <- lowtest$Temperature + runif(nrow(lowtest), -temperature_uncertainty, temperature_uncertainty)
+lowtest$Ohms <- lowtest$Ohms + runif(nrow(lowtest), -electrical_uncertainty, electrical_uncertainty)
+
+
+hightest <- data.frame(
+"Test Number" = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+"Temperature" = c(hightest1_temp, hightest2_temp, hightest3_temp, hightest4_temp, hightest5_temp,
+hightest6_temp, hightest7_temp, hightest8_temp, hightest9_temp, hightest10_temp),
+"Ohms" = c(hightest1_ohms, hightest2_ohms, hightest3_ohms, hightest4_ohms, hightest5_ohms,
+hightest6_ohms, hightest7_ohms, hightest8_ohms, hightest9_ohms, hightest10_ohms)
+)
+
+# Add the temperature and ohms uncertainty to the hightest data frame
+hightest$Temperature <- hightest$Temperature + runif(nrow(hightest), -temperature_uncertainty, temperature_uncertainty)
+hightest$Ohms <- hightest$Ohms + runif(nrow(hightest), -electrical_uncertainty, electrical_uncertainty)  
+
+lowtest$Current <- voltage / lowtest$Ohms
+lowtest$Power <- voltage^2 / lowtest$Ohms
+print(lowtest)
+
+
+hightest$Current <- voltage / hightest$Ohms
+hightest$Power <- voltage^2 / hightest$Ohms
+print(hightest)
+
