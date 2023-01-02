@@ -1,0 +1,15 @@
+#The current is a variable in this function because the DC power supply should be set to constant voltage with variable current. 
+#In other words, the voltage is held constant while the current is adjusted to achieve the desired resistance. 
+#This is a common approach when using a DC power supply to power an electrical circuit, as it allows for precise control over the resistance of the circuit.
+
+target_resistance <- 14
+voltage < - 24
+
+ohms_law <- function(voltage, target_resistance) {
+  # Calculate the current using Ohm's Law: I = V/R
+  current <- voltage / resistance
+  
+  # Return the calculated current
+  return(current)
+}
+print(current)
