@@ -124,3 +124,20 @@ hightest$Current <- voltage / hightest$Ohms
 hightest$Power <- voltage^2 / hightest$Ohms
 print(hightest)
 
+
+simulation <- data.frame()
+for (cycle in 1:50) {
+
+resistance_uncertain <- resistance + runif(1, -electrical_uncertainty, electrical_uncertainty)
+temperature_uncertain <- temperature + runif(1, -temperature_uncertainty, temperature_uncertainty)
+
+current <- voltage / resistance_uncertain
+power <- voltage^2 / resistance_uncertain
+
+
+simulation <- rbind(simulation, data.frame(Cycle = cycle, Resistance = resistance_uncertain, Temperature = temperature_uncertain, Current = current, Power = power))
+}
+
+
+simulation
+
