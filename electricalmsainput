@@ -1,0 +1,23 @@
+equipment1 <- "Multimeter"
+equipment1voltage <-28
+equipment1ohms <- 15
+electricaluncertainty1 <- 0.1
+temperatureuncertainty1 <- 0.05
+equipment1uppertolerance <- 0.2
+equipment1lowertolerance <- 0.1
+
+equipment2 <- "Ohmmeter"
+equipment2voltage <- 24
+equipment2ohms <- 14
+electricaluncertainty2 <- 0.2
+temperatureuncertainty2 <- 0.05
+equipment2uppertolerance <- 0.5
+equipment2lowertolerance <- 0.3
+
+equipment3 <- "Voltmeter"
+equipment3voltage <- 32
+equipment3ohms <- 18
+electricaluncertainty3 <- 0.3
+temperatureuncertainty3 <- 0.1
+equipment3uppertolerance <- 0.7
+equipment3lowertolerance <- 0.4
