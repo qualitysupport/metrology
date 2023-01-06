@@ -1,12 +1,20 @@
 #inputs
+#This is the temperature measurement on the temperature gage. 
 temperature <- 28.0
-resistance <- 15
+#This is the resistance measurement on the gage. 
+resistance <- 15.2
 voltage <-20
-electrical_uncertainty <- .2000
+#This is your calculated uncertainty provided by your laboratory. 
+electrical_uncertainty <- .2
 temperature_uncertainty <- .2000
+#This is how many times you want to simulate a measurement. 
 cycle <- 50
-proccesstolerancelow <-14.5000
-processtolerancehigh <-15.5000
+#This is your process tolerances that will be used to make pass/fail decisions. 
+proccesstolerancelow <-14.8000
+processtolerancehigh <-15.2000
+
+
+#This is the temperature test that will be used for further analysis on how temperature impacts electrical resistance. 
 
 
 #lowtest temperature inputs from temperature sensor
