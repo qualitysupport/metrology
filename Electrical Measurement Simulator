@@ -1,10 +1,13 @@
 #inputs
+temperature <- 28.0
+resistance <- 15
+voltage <-20
+electrical_uncertainty <- .2000
+temperature_uncertainty <- .2000
+cycle <- 50
+proccesstolerancelow <-14.5000
+processtolerancehigh <-15.5000
 
-resistance <- 14
-voltage <-24
-electrical_uncertainty <- 0.2
-temperature_uncertainty <- 1
-measurement_uncertainty <- .1
 
 #lowtest temperature inputs from temperature sensor
 
@@ -89,6 +92,8 @@ electrical_uncertainty_description <- "Electrical Sensing Uncertainty"
 print(electrical_uncertainty_description)
 print(electrical_uncertainty)
 
+
+
 # Create the lowtest data frame
 lowtest <- data.frame(
   "Test Number" = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
@@ -101,6 +106,9 @@ lowtest <- data.frame(
 # Add the temperature and ohms uncertainty to the lowtest data frame
 lowtest$Temperature <- lowtest$Temperature + runif(nrow(lowtest), -temperature_uncertainty, temperature_uncertainty)
 lowtest$Ohms <- lowtest$Ohms + runif(nrow(lowtest), -electrical_uncertainty, electrical_uncertainty)
+
+
+
 
 
 hightest <- data.frame(
@@ -125,7 +133,8 @@ hightest$Power <- voltage^2 / hightest$Ohms
 print(hightest)
 
 
-simulation <- data.frame()
+             
+simulation1 <- data.frame()
 for (cycle in 1:50) {
 
 resistance_uncertain <- resistance + runif(1, -electrical_uncertainty, electrical_uncertainty)
@@ -135,9 +144,23 @@ current <- voltage / resistance_uncertain
 power <- voltage^2 / resistance_uncertain
 
 
-simulation <- rbind(simulation, data.frame(Cycle = cycle, Resistance = resistance_uncertain, Temperature = temperature_uncertain, Current = current, Power = power))
+simulation1 <- rbind(simulation1, data.frame(Cycle = cycle, Resistance = resistance_uncertain, Temperature = temperature_uncertain, Current = current, Power = power))
 }
 
 
-simulation
+#This is adding the process tolerance to the data frame. 
+simulation1$ProcTolLow <- proccesstolerancelow
+simulation1$ProcTolHigh <- processtolerancehigh
+
+
+#Description of simulation1
+simulation1description <- "simulation1"
+print(simulation1description)
+simulation1
+
+
+plot(simulation1$Cycle, simulation1$Resistance, type = "l", ylim = c(proccesstolerancelow, processtolerancehigh), xlab = "Cycle", ylab = "Resistance (Ohms)")
+lines(simulation1$Cycle, simulation1$ProcTolLow, col = "red")
+lines(simulation1$Cycle, simulation1$ProcTolHigh, col = "red")
+
 
